@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-lg-6">
+        <ul class="list-group">
+            <li class="list-group-item">
+                Hello
+            </li>
+            <li class="list-group-item">
+                World
+            </li>
+            <li class="list-group-item">
+                Test
+            </li>
+        </ul>
+    </div>
+    <div class="col-lg-6">
+        <p>
+            Testing shit on rails scss
+        </p>
+    </div>
+    <div class="card-group">
+      <% @questions.each do |q| %>
+        <div class="card">
+            <div class="card-block">
+              <img class="media-object" src="<%= q.gravatar %>">
+                <h4 class="card-title"><%= q.email %> asked:</h4>
+                <p class="card-text"><%= q.body %></p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted"><%= time_ago_in_words q.created_at %></small>
+                <a href="<%= question_path(q) %>" class="btn btn-success btn-xs"> View Answers</a>
+            </div>
+        </div>
+        <% end %>
+        <% if @questions.empty? %>
+            <div class="alert alert-info">
+              Nothing Here Yet
+            </div>
+        <% end %>
+    </div>
+</div>

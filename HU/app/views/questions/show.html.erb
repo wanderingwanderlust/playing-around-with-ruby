@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+            <div class="card-block">
+                <h3 class="card-title"><%= @question.email  %> asked:</h3>
+                <p class="card-text"><%= @question.body  %></p>
+
+                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#new-answer-modal">Submit New Answer</button>
+                <%= render 'home/new_answer_form'%>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+          <% @answers.each do |answer| %>
+            <div class="card card-inverse card-primary mb-3 text-center">
+                <div class="card-block">
+                    <blockquote class="card-blockquote">
+                        <p><%= answer.body%></p>
+                        <footer>Someone famous in
+                            <cite title="Source Title"><%= answer.email %> answered  <%= time_ago_in_words answer.created_at %> ago </cite>
+                        </footer>
+                    </blockquote>
+                    <a href="/questions/12" class="btn btn-success btn-xs">View Answers</a>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
